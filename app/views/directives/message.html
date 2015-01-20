@@ -1,0 +1,19 @@
+<li class="clearfix" ng-class="{left: !me, right: me}">
+    <span class="chat-img" ng-class="{'pull-left': !me, 'pull-right': me}">
+        <img src="http://placehold.it/50/{{ color }}/fff&amp;text={{ shortName }}" alt="User Avatar"
+             class="img-circle">
+    </span>
+
+    <div class="chat-body clearfix">
+        <div class="header">
+            <strong ng-if="!me" class="primary-font">{{ message.nick }}</strong>
+            <small class="text-muted" ng-class="{'pull-right': !me}">
+                <span class="glyphicon glyphicon-time"></span> Some time ago...
+            </small>
+            <strong ng-if="me" class="primary-font pull-right">{{ message.nick }}</strong>
+        </div>
+        <p>
+            {{ message.msg }}
+        </p>
+    </div>
+</li>

@@ -8,7 +8,7 @@
  * Controller of the tutorialChatApp
  */
 angular.module('tutorialChatApp')
-    .controller('MainCtrl', function ($scope) {
+    .controller('MainCtrl', function ($scope, $cookies) {
         $scope.messages = [
             {
                 nick: 'User1',
@@ -31,4 +31,9 @@ angular.module('tutorialChatApp')
 
             $scope.newMessage = '';
         };
+
+
+        while ($cookies.userid === null || $cookies.userid.trim().length < 3) {
+            $cookies.userid = prompt('Wpisz swoje imie i nazwisko');
+        }
     });
