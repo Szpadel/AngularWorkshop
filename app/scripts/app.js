@@ -16,7 +16,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -31,4 +32,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+    .factory('Chat', function($firebase) {
+      return $firebase(new Firebase("https://wit-workshop.firebaseio.com/demo/").endAt().limit(100));
+    });

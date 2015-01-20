@@ -8,33 +8,26 @@
  * Controller of the tutorialChatApp
  */
 angular.module('tutorialChatApp')
-    .controller('MainCtrl', function ($scope, $cookies) {
-        $scope.messages = [
-            {
-                nick: 'User1',
-                msg: 'Hello world',
-                timestamp: new Date()
-            },
-            {
-                nick: 'User2',
-                msg: 'Hi!',
-                timestamp: new Date()
-            }
-        ];
+    .controller('MainCtrl', function ($scope, $cookies, Chat) {
+        $scope.messages = Chat.$asArray();
 
         $scope.newMessage = '';
 
 
         $scope.send = function () {
-            $scope.messages.push({
-                nick: 'My',
+            $scope.messages.$add({
+                nick: $cookies.userid,
                 msg: $scope.newMessage,
-                timestamp: new Date()
+                timestamp: new Date().toString()
             });
 
             $scope.newMessage = '';
         };
 
+        $scope.$watch('messages', function(){
+            var chat = $(".panel-body").first();
+            chat.animate({scrollTop: chat.prop("scrollHeight")}, 250);
+        });
 
         while ($cookies.userid === null || $cookies.userid.trim().length < 3) {
             $cookies.userid = prompt('Wpisz swoje imie i nazwisko');
