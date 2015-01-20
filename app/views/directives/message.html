@@ -8,7 +8,7 @@
         <div class="header">
             <strong ng-if="!me" class="primary-font">{{ message.nick }}</strong>
             <small class="text-muted" ng-class="{'pull-right': !me}">
-                <span class="glyphicon glyphicon-time"></span> Some time ago...
+                <span class="glyphicon glyphicon-time"></span> <timeago timestamp="message.timestamp"></timeago>
             </small>
             <strong ng-if="me" class="primary-font pull-right">{{ message.nick }}</strong>
         </div>

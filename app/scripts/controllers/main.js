@@ -12,11 +12,13 @@ angular.module('tutorialChatApp')
         $scope.messages = [
             {
                 nick: 'User1',
-                msg: 'Hello world'
+                msg: 'Hello world',
+                timestamp: new Date()
             },
             {
                 nick: 'User2',
-                msg: 'Hi!'
+                msg: 'Hi!',
+                timestamp: new Date()
             }
         ];
 
@@ -26,7 +28,8 @@ angular.module('tutorialChatApp')
         $scope.send = function () {
             $scope.messages.push({
                 nick: 'My',
-                msg: $scope.newMessage
+                msg: $scope.newMessage,
+                timestamp: new Date()
             });
 
             $scope.newMessage = '';
